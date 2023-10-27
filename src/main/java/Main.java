@@ -28,19 +28,25 @@ public class Main {
         // Get user input
         System.out.print("Guess a number between 1 and 10: ");
         int guess = scanner.nextInt();
-
-        do {
-            if (guess > target) {
-                System.out.print("Too high, enter a new guess: ");
-                guess = scanner.nextInt();
-            } else {
-                System.out.print("Too low, enter a new guess: ");
-                guess = scanner.nextInt();
-            }
-        } while (guess != target);
-
-        System.out.print("You got it, the answer is " + target + "!");
+        int attempt = 1;
 
 
+        if (guess == target){
+            System.out.print("You got it. The number is " + target + " and took you 1 attempt to guess.");
+        } else {
+            do {
+                if (guess > target) {
+                    System.out.print("Too high, enter a new guess: ");
+                    guess = scanner.nextInt();
+                    attempt++;
+                } else {
+                    System.out.print("Too low, enter a new guess: ");
+                    guess = scanner.nextInt();
+                    attempt++;
+                }
+            } while (guess != target);
+
+            System.out.print("You got it. The answer is " + target + " and took you " + attempt + " attempts.");
+        }
     }
 }
